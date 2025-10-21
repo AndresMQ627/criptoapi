@@ -15,18 +15,21 @@ let refresh = async ()=>{
     let data= res.data.data
     coinsData = data
     console.log("Data API COINS:", coinsData);
-
-     const precios = coinsData.map(coin => parseFloat(coin.price_usd));
-
-      
+        
+        // Promedio de las modenas
+        const precios = coinsData.map(coin => parseFloat(coin.price_usd));
         const suma = precios.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
-
-      
         const promedio = suma / precios.length;
-
-    
         const h2Promedio = document.getElementById('promCoins');
         h2Promedio.textContent = fmtUSD(promedio);
+
+       // Moneda más costosa
+        let masCostosa = coinsData.reduce((max, coin) => {
+            return parseFloat(coin.price_usd) > parseFloat(max.price_usd) ? coin : max;
+        });
+        const h2MasCostosa = document.getElementById('topCoin');
+        h2MasCostosa.textContent = `${masCostosa.name} - ${fmtUSD(masCostosa.price_usd)}`;
+
 
     //carga de datos de casas de cambios
     
@@ -35,16 +38,29 @@ let refresh = async ()=>{
     exchangesData=data2
     console.log("Data API EXCHANGES:", exchangesData);
 
+    //muestra el total de la casa de cambios
     const h2Exchanges = document.getElementById('totalEx');
     h2Exchanges.textContent = ` ${exchangesData.data.length}`;
+
+    //Top 10 criptos mas costosas
+    const coinsConPrecioValido = coinsData
+      .map(coin => ({
+        name: coin.name,
+        price_usd: parseFloat(coin.price_usd)
+      }))
+      .filter(coin => !isNaN(coin.price_usd));
+
+    // Ordenar de mayor a menor precio
+    coinsConPrecioValido.sort((a, b) => b.price_usd - a.price_usd);
+
+    // Tomar las primeras 10
+    const top10Costosas = coinsConPrecioValido.slice(0, 10);
+
+    console.log("Top 10 criptos más costosas:", top10Costosas);
+
     
-    let arr_1=[
-        {name:"Bitcoin",price_usd:100},
-        {name:"Etherium",price_usd:200},
-        {name:"A",price_usd:300},
-        {name:"B",price_usd:500},
-    ]
-    renderCoinChart(arr_1);
+   
+    renderCoinChart(top10Costosas);
 
 }
 //función solo para devolver los colores

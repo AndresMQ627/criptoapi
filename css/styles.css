@@ -1,67 +1,101 @@
-
-    :root {
-      --bg-1: #0a0b0f;
-      --bg-2: #11131a;
-      --bg-3: #171a23;
-      --txt-1: #e6e9ef;
-      --txt-2: #9aa4b2;
-      --accent: #06d6a0;
-      --accent-2: #4cc9f0;
-      --danger: #ef476f;
-      --warning: #ffd166;
-    }
-    html, body {
-      background: radial-gradient(1200px 800px at 100% -20%, #11131a 0%, #0a0b0f 60%, #05060a 100%), var(--bg-1);
-      color: var(--txt-1);
-    }
-    .navbar {
-      background: linear-gradient(90deg, rgba(10,11,15,0.8) 0%, rgba(17,19,26,0.85) 100%);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #1f2330;
-    }
-    .card {
-      background-color: var(--bg-2);
-      border: 1px solid #1f2330;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset, 0 8px 24px rgba(0,0,0,0.35);
-    }
-    .card:hover { border-color: var(--bg-3); }
-    .kpi {
-      font-size: clamp(1.25rem, 2.4vw, 1.75rem);
-      font-weight: 700;
-      letter-spacing: 0.3px;
-    }
-    .kpi-label {
-      font-size: 0.85rem;
-      color: var(--txt-2);
-    }
-    .badge-soft {
-      background: rgba(6, 214, 160, 0.12);
-      color: var(--accent);
-      border: 1px solid rgba(6, 214, 160, 0.25);
-    }
-    .btn-refresh {
-      border-color: #283042;
-      background: #121621;
-      color: #e6e9ef;
-    }
-    .btn-refresh:hover { border-color: #344057; background: #161b29; }
-    .table-dark thead th { color: var(--txt-2); }
-    .table-dark tbody tr:hover { background: #141827; }
-    .search-input {
-      background: #0e1120; border: 1px solid #2a3042; color: var(--txt-1);
-    }
-    .search-input::placeholder { color: #6d7689; }
-    .muted { color: var(--txt-2); }
-    .footer {
-      border-top: 1px solid #1f2330; color: var(--txt-2);
-    }
-    .spinner {
-      height: 24px; width: 24px; border-width: 3px;
-    }
-    .chart-container {
-      position: relative; height: 340px;
-    }
-    @media (max-width: 576px) {
-      .chart-container { height: 280px; }
-    }
-  
+:root {
+    --bg-1: #05060a;
+    --bg-2: #11131a;
+    --bg-3: #1a1d28;
+    --txt-1: #e6e9ef;
+    --txt-2: #8a93a2;
+    --accent: #06d6a0;
+    --accent-rgb: 6, 214, 160;
+    --accent-2: #4cc9f0;
+    --danger: #ef476f;
+    --warning: #ffd166;
+}
+ 
+html, body {
+    background-color: var(--bg-1);
+    color: var(--txt-1);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+}
+ 
+.navbar {
+    background: rgba(17, 19, 26, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+ 
+.card {
+    background-color: var(--bg-2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(var(--accent-rgb), 0.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--accent-rgb), 0.1);
+}
+ 
+.kpi {
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    font-variant-numeric: tabular-nums;
+}
+ 
+.kpi-label {
+    font-size: 0.85rem;
+    color: var(--txt-2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+ 
+.btn-refresh {
+    border-color: #283042;
+    background: var(--bg-3);
+    color: var(--txt-1);
+    transition: all 0.2s ease;
+}
+ 
+.btn-refresh:hover {
+    border-color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.1);
+    color: var(--accent);
+    transform: scale(1.05);
+}
+ 
+.table-dark thead th {
+    color: var(--txt-2);
+    border-bottom: 2px solid rgba(var(--accent-rgb), 0.3);
+}
+ 
+.table-dark tbody tr {
+    transition: background-color 0.2s ease;
+}
+ 
+.table-dark tbody tr:hover {
+    background: var(--bg-3);
+}
+.searchbar {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border: 1px solid #283042;
+    border-radius: 4px;
+    background-color: var(--bg-3);
+    color: var(--txt-1);
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.muted { color: var(--txt-2); }
+.chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+@media (max-width: 576px) {
+    .chart-container { height: 280px; }
+}
