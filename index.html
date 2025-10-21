@@ -1,38 +1,61 @@
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
 </head>
+
 <body>
     <!-- NAV -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
-        <a class="navbar-brand fw-bold" href="#">
-            <span style="color:var(--accent)">●</span> Crypto Dashboard
-            <small class="ms-2 text-secondary">Coinlore</small>
-        </a>
-        <div class="d-flex gap-2">
-            <button id="btnReload" class="btn btn-sm btn-outline-secondary btn-refresh">
-            Recargar datos
+            <a class="navbar-brand fw-bold" href="#">
+                <span style="color:#39ff14;">●</span> Crypto Dashboard
+                <small class="ms-2 text-secondary">Coinlore</small>
+            </a>
+            <button id="btnReload" class="btn btn-sm btn-outline-secondary btn-refresh"
+                style="border-color: #39ff14; color: #39ff14;">
+                Recargar datos
             </button>
-        </div>
+
         </div>
     </nav>
 
     <main class="container my-4">
         <!-- Charts -->
         <div class="row g-3 mt-1">
+            <div class="col-12 col-md-4">
+                <div class="card p-3">
+                    <h2 id="totalEx">0</h2>
+                    <h5 style="color: gray; font-size: small;">Exchanges total</h5>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card p-3">
+                    <h2 id="promCoins">100</h2>
+                    <h5 style="color: gray; font-size: small;">Mean prices</h5>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="card p-3">
+                    <h2>100</h2>
+                    <h5 style="color: gray; font-size: small;">Top coin</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-1">
             <div class="col-12 col-lg-6">
                 <div class="card p-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <h6 class="mb-0">Top 10 Coins</h6>
                         <div class="d-flex align-items-center gap-2">
-                        <small id="lastUpdatedCoin" class="muted">—</small>
-                        <div id="spinCoin" class="spinner-border text-secondary spinner d-none" role="status"></div>
+                            <small id="lastUpdatedCoin" class="muted">—</small>
+                            <div id="spinCoin" class="spinner-border text-secondary spinner d-none" role="status"></div>
                         </div>
                     </div>
                     <div class="chart-container mt-3">
@@ -42,19 +65,20 @@
             </div>
             <div class="col-12 col-lg-6">
                 <div class="card p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="mb-0">Top 10 Exchanges por Volumen (USD)</h6>
-                    <div class="d-flex align-items-center gap-2">
-                    <small id="lastUpdatedExchanges" class="muted">—</small>
-                    <div id="spinExchanges" class="spinner-border text-secondary spinner d-none" role="status"></div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0">Top 10 Exchanges por Volumen (USD)</h6>
+                        <div class="d-flex align-items-center gap-2">
+                            <small id="lastUpdatedExchanges" class="muted">—</small>
+                            <div id="spinExchanges" class="spinner-border text-secondary spinner d-none" role="status">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container mt-3">
+                        <canvas id="chartExchanges"></canvas>
                     </div>
                 </div>
-                <div class="chart-container mt-3">
-                    <canvas id="chartExchanges"></canvas>
-                </div>
-                </div>
             </div>
-          
+
         </div>
     </main>
 
@@ -64,4 +88,5 @@
 
     <script src="/js/script.js"></script>
 </body>
+
 </html>

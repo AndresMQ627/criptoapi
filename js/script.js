@@ -16,12 +16,27 @@ let refresh = async ()=>{
     coinsData = data
     console.log("Data API COINS:", coinsData);
 
+     const precios = coinsData.map(coin => parseFloat(coin.price_usd));
+
+      
+        const suma = precios.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
+
+      
+        const promedio = suma / precios.length;
+
+    
+        const h2Promedio = document.getElementById('promCoins');
+        h2Promedio.textContent = fmtUSD(promedio);
+
     //carga de datos de casas de cambios
     
     const res2 =response = await axios.get(MARKETS_URL); 
     let data2= res.data
     exchangesData=data2
     console.log("Data API EXCHANGES:", exchangesData);
+
+    const h2Exchanges = document.getElementById('totalEx');
+    h2Exchanges.textContent = ` ${exchangesData.data.length}`;
     
     let arr_1=[
         {name:"Bitcoin",price_usd:100},
