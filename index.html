@@ -14,18 +14,17 @@
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="#">
-        <span style="color:#39ff14;">●</span> Crypto Dashboard
+        <span style="color:#4e54c8;">●</span> Crypto Dashboard
         <small class="ms-2 text-secondary">Coinlore</small>
       </a>
       <button id="btnReload" class="btn btn-sm btn-outline-secondary btn-refresh"
-        style="border-color: #39ff14; color: #39ff14;">
+        style="border-color: #4e54c8; color: #4e54c8;">
         Recargar datos
       </button>
     </div>
   </nav>
 
   <main class="container my-4">
-    <!-- KPIs -->
     <div class="row g-3 mt-1">
       <div class="col-3">
         <div class="card p-3">
@@ -80,50 +79,54 @@
     </div>
 
     <!-- Tablas y buscadores del segundo código -->
-    <div class="row g-3 mt-3">
-      <div class="col-12 col-lg-6">
-        <div class="card p-3">
-          <h6 class="mb-0">Coins</h6>
-          <input type="search" class="searchbar" id="sbCoins" style="margin-top: 10px;" placeholder="Buscar exchange..." />
-          <div class="table-responsive mt-3">
-            <table class="table table-dark table-sm">
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Exchange</th>
-                  <th>Key</th>
-                  <th>Precio (BTC)</th>
-                  <th>Precio (USD)</th>
-                </tr>
-              </thead>
-              <tbody id="coinsTableBody"></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="card p-3">
-          <h6 class="mb-0">Exchanges</h6>
-          <input type="search" class="searchbar" id="sbExchanges" style="margin-top: 10px;"
-            placeholder="Buscar mercado, par o exchange..." />
-          <div class="table-responsive mt-3">
-            <table class="table table-dark table-sm">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Exchange</th>
-                  <th>Par</th>
-                  <th>Precio</th>
-                  <th>Volumen (USD)</th>
-                </tr>
-              </thead>
-              <tbody id="exchangesTableBody"></tbody>
-            </table>
-          </div>
-        </div>
+   <div class="row g-3 mt-3">
+  <div class="col-12 col-lg-6">
+    <div class="card p-3">
+      <h6 class="mb-0">Coins</h6>
+      <input type="search" class="searchbar" id="sbCoins" style="margin-top: 10px;" placeholder="Buscar coins..." />
+      
+      <!-- Contenedor con scroll -->
+      <div class="table-scroll mt-3">
+        <table class="table table-dark table-sm">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Exchange</th>
+              <th>Key</th>
+              <th>Precio (BTC)</th>
+              <th>Precio (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="coinsTableBody"></tbody>
+        </table>
       </div>
     </div>
+  </div>
+
+  <div class="col-12 col-lg-6">
+    <div class="card p-3">
+      <h6 class="mb-0">Exchanges</h6>
+      <input type="search" class="searchbar" id="sbExchanges" style="margin-top: 10px;" placeholder="Buscar mercado, par o exchange..." />
+      
+      <!-- Contenedor con scroll -->
+      <div class="table-scroll mt-3">
+        <table class="table table-dark table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Exchange</th>
+              <th>Par</th>
+              <th>Precio</th>
+              <th>Volumen (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="exchangesTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
   </main>
 
   <!-- Scripts -->
